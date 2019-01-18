@@ -72,7 +72,7 @@ module Configure
       else
         config.raise_delivery_errors = false
         config.default_options = {
-          from: "noconfig@sider.review"
+          from: default_from || "noconfig@sider.review"
         }
       end
     end

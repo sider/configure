@@ -20,6 +20,21 @@ class ActionMailerTest < Minitest::Test
     assert_equal({ from: "noconfig@sider.review"}, config.default_options)
   end
 
+  def test_no_email_but_from
+    env = {
+      "ACTION_MAILER_SMTP_ADDRESS" => "",
+      "ACTION_MAILER_DEFAULT_FROM_EMAIL" => "test@sider.review"
+    }
+
+    config = Config.new
+    Configure::ActionMailer.new(env: env).configure(config)
+
+    assert_equal :smtp, config.delivery_method
+    refute config.raise_delivery_errors
+    assert_nil config.smtp_settings
+    assert_equal({ from: "test@sider.review"}, config.default_options)
+  end
+
   def test_smtp_no_auth
     env = {
       "ACTION_MAILER_SMTP_ADDRESS" => "smtp.example.com",
