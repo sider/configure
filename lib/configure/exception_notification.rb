@@ -53,6 +53,7 @@ module Configure
             bugsnag.session_endpoint = bugsnag_session_endpoint!
           end
           bugsnag.auto_notify = false
+          bugsnag.auto_capture_sessions = false if bugsnag.respond_to?(:auto_capture_sessions=)
         end
 
         hash = {}
