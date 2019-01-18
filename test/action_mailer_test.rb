@@ -17,7 +17,7 @@ class ActionMailerTest < Minitest::Test
     assert_equal :smtp, config.delivery_method
     refute config.raise_delivery_errors
     assert_nil config.smtp_settings
-    assert_nil config.default_options
+    assert_equal({ from: "noconfig@sider.review"}, config.default_options)
   end
 
   def test_smtp_no_auth
