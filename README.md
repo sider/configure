@@ -9,7 +9,7 @@ So, keep configuration simple and unified, use this gem to configure.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'configure', git: "https://github.com:sider/configure.git"
+gem 'configure', git: "https://github.com/sider/configure.git"
 ```
 
 And then execute:
