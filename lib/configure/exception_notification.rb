@@ -49,8 +49,7 @@ module Configure
         Bugsnag.configure do |bugsnag|
           bugsnag.api_key = bugsnag_api_key
           if bugsnag_endpoint || bugsnag_session_endpoint
-            bugsnag.endpoint = bugsnag_endpoint!
-            bugsnag.session_endpoint = bugsnag_session_endpoint!
+            bugsnag.set_endpoints(bugsnag_endpoint!, bugsnag_session_endpoint!)
           end
           bugsnag.auto_notify = false
           bugsnag.auto_capture_sessions = false if bugsnag.respond_to?(:auto_capture_sessions=)
